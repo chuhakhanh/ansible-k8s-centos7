@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  vars_files: env_c4.yml
+  gather_facts: no
+  become: true
+  serial: 4
+  tasks: 
+    - name: Create a snap1 snapshot 
+      community.vmware.vmware_guest:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        datacenter: "{{ vcenter_datacenter }}"
+        validate_certs: no
+        folder: /khanhchu
+        name: "{{ item.name }}"
+        state: present
+        snapshot_name: snap1
+        description: snap1_description
+        
+      loop: "{{ vms }}" 
+      delegate_to: localhost
+      register: deploy
+      

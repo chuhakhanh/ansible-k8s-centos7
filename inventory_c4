@@ -1,0 +1,5 @@
+[master]
+c4-m-1
+[worker]
+c4-w-1
+c4-w-2
