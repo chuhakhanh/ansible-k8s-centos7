@@ -14,6 +14,7 @@ done
 
 cd /venv_kolla/share/c4/k8s-pre-bootstrap
 ansible-playbook -i hosts k8s-prep.yml
+ansible-playbook snapshot_vms_k8s_cluster_c4.yml
 
 kubeadm init \
   --apiserver-advertise-address=10.1.17.81 \
