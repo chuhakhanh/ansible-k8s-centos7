@@ -6,7 +6,7 @@
   serial: 4
   tasks: 
     - name: Create a snap1 snapshot 
-      community.vmware.vmware_guest:
+      vmware_guest_snapshot:
         hostname: "{{ vcenter_hostname }}"
         username: "{{ vcenter_username }}"
         password: "{{ vcenter_password }}"
@@ -16,7 +16,7 @@
         name: "{{ item.name }}"
         state: present
         snapshot_name: snap1
-        description: snap1_description
+        description: after k8s-prepare
         
       loop: "{{ vms }}" 
       delegate_to: localhost
