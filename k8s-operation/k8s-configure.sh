@@ -8,6 +8,9 @@ kubeadm init \
   --pod-network-cidr 192.168.128.0/24 \
   --upload-certs
 
+https://projectcalico.docs.tigera.io/getting-started/kubernetes/self-managed-onprem/onpremises
+curl https://projectcalico.docs.tigera.io/manifests/calico.yaml -O
+
 https://computingforgeeks.com/deploy-kubernetes-cluster-on-centos-with-ansible-calico/
 #https://projectcalico.docs.tigera.io/getting-started/kubernetes/quickstart
 #kubectl create -f https://projectcalico.docs.tigera.io/manifests/tigera-operator.yaml
@@ -84,3 +87,22 @@ deployment.apps/http-test-svc   2/2     2            2           11h   http     
 
 NAME                                       DESIRED   CURRENT   READY   AGE   CONTAINERS   IMAGES   SELECTOR
 replicaset.apps/http-test-svc-5fbf5cddd6   2         2         2       11h   http         httpd    pod-template-hash=5fbf5cddd6,run=http-test-app
+
+[root@c4-m-1 ~]# kubectl exec pod/nginx-ingress-x7xg8 env -n nginx-ingress
+kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=nginx-ingress-x7xg8
+POD_NAMESPACE=nginx-ingress
+POD_NAME=nginx-ingress-x7xg8
+KUBERNETES_SERVICE_PORT_HTTPS=443
+KUBERNETES_PORT=tcp://10.96.0.1:443
+KUBERNETES_PORT_443_TCP=tcp://10.96.0.1:443
+KUBERNETES_PORT_443_TCP_PROTO=tcp
+KUBERNETES_PORT_443_TCP_PORT=443
+KUBERNETES_PORT_443_TCP_ADDR=10.96.0.1
+KUBERNETES_SERVICE_HOST=10.96.0.1
+KUBERNETES_SERVICE_PORT=443
+NGINX_VERSION=1.21.6
+NJS_VERSION=0.7.2
+PKG_RELEASE=1~bullseye
+HOME=/nonexistent
